@@ -16,9 +16,6 @@ class Handler(BaseHTTPRequestHandler):
             capital = dic['capital']
         if 'country' in dic:
             country = dic['country']
-        '''
-        The capital of Chile is Santiago
-        '''
         if len(capital) > 1:
             url = 'https://restcountries.com/v3.1/capital/'
             r = requests.get(url + capital)
@@ -36,9 +33,6 @@ class Handler(BaseHTTPRequestHandler):
                 country_name = c_data['capital'][0]
                 message = f'The capital of {capital_name} is {country_name}'
         else:
-            '''
-             Santiago is the capital of Chile
-            '''
             message = "Please provide capital or country"
 
         self.send_response(200)
@@ -48,6 +42,8 @@ class Handler(BaseHTTPRequestHandler):
         return
 
 
+# To get the body of a json file we import json then we write the following :
+
 # response = requests.get('https://restcountries.com/v3.1/capital/Amman')
 # print(f'Response status code: {response.status_code}')
 # print(f'Response header: {response.headers}')
@@ -55,7 +51,7 @@ class Handler(BaseHTTPRequestHandler):
 # print('*'*50)
 #
 #
-# response = requests.get('https://restcountries.com/v3.1/name/jordan')
+# response = requests.get('https://restcountries.com/v3.1/name/Japan')
 # print(f'Response status code: {response.status_code}')
 # print(f'Response header: {response.headers}')
 # print(f'Response body : {json.dumps(response.json(), indent=4)}')
