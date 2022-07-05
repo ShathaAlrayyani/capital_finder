@@ -18,20 +18,20 @@ class Handler(BaseHTTPRequestHandler):
             country = dic['country']
         if len(capital) > 1:
             url = 'https://restcountries.com/v3.1/capital/'
-            r = requests.get(url + capital)
-            data = r.json()
+            req = requests.get(url + capital)
+            data = req.json()
             for c_data in data:
-                capital_name = c_data['capital'][0]
+                cap_name = c_data['capital'][0]
                 country_name = c_data['name']['common']
-                message = str(capital_name + ' is the capital of ' + country_name)
+                message = f'{cap_name} is the capital of {country_name}'
         elif len(country) > 1:
             url = 'https://restcountries.com/v3.1/name/'
-            r = requests.get(url + country)
-            data = r.json()
+            req = requests.get(url + country)
+            data = req.json()
             for c_data in data:
-                capital_name = c_data['name']['common']
+                cap_name = c_data['name']['common']
                 country_name = c_data['capital'][0]
-                message = f'The capital of {capital_name} is {country_name}'
+                message = f'The capital of {cap_name} is {country_name}'
         else:
             message = "Please provide capital or country"
 
@@ -43,7 +43,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 # To get the body of a json file we import json then we write the following :
-
+#
 # response = requests.get('https://restcountries.com/v3.1/capital/Amman')
 # print(f'Response status code: {response.status_code}')
 # print(f'Response header: {response.headers}')
